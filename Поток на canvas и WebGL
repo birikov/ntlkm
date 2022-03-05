@@ -1,0 +1,65 @@
+let angle = 0;
+
+function setup() {
+  var width = 1440*0.8;
+  var height = 851*0.8;
+  createCanvas(width, height, WEBGL);
+  frameRate(60);
+  smooth();
+}
+
+
+let BASECOLORS = [
+  "#4acce1",
+  "#beff1b",
+  "#020db6",
+  "#db89db",
+  "#55d6e4",
+  "#da1d51",
+];
+
+let BASECOLORS2 = [
+  "#000",
+  "#beff1b",
+];
+  
+let NOVOTELECOMCOLORS = [
+  "#bbff00",
+  "#fe403c",
+  "#ad00ff",
+  "#ff00d6",
+  "#fdefe9",
+  "#ffffff",
+];
+
+
+function draw() {
+  COLORS = [];
+  for (var i = 0; i < 360; i += 1) {
+    COLORS[i] = [random(255),random(255),random(255)];
+  };
+  
+  background(0);
+  
+  var length = 4000;
+  var circleWidth = 500;
+  
+  orbitControl();
+  
+  for (var i = 0; i < min(frameCount*5, 360); i += 2) {
+    strokeWeight(random(10));
+    var angle = random(radians(360));
+    line(
+          circleWidth*cos(angle), 
+          circleWidth*sin(angle), 
+          length, 
+          0*cos(angle), 
+          0*sin(angle), 
+          -length);
+          
+    //cylinder(1, circleWidth, 4, 1, i, 500);
+          
+    stroke(COLORS[i][0], COLORS[i][1], COLORS[i][2]);
+    stroke(random(NOVOTELECOMCOLORS));
+  };
+}
