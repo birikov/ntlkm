@@ -1,0 +1,17 @@
+// Код на Java для отладки
+
+void setup() {
+  size(1900, 1000);
+  stroke(255);
+  strokeWeight(3);
+  noFill();
+}
+
+void draw() {
+  background(0);
+  for (int i = 0; i < height; i += 20) {
+    color c = color(random(255), random(255), random(255));
+    stroke(c);
+    bezier(0, i, mouseX, i, mouseX, mouseY, width, mouseY);
+  }
+}
